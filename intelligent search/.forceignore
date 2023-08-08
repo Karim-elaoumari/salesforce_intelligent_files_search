@@ -3,7 +3,7 @@
 #
 
 package.xml
-
+deploy.sh
 # LWC configuration files
 **/jsconfig.json
 **/.eslintrc.json
