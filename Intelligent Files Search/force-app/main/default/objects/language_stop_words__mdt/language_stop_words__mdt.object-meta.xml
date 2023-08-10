@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>language_stop_words</label>
+    <pluralLabel>languages_stop_words</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

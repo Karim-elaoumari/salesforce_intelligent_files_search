@@ -1,0 +1,121 @@
+<template>
+    <div class="main-container">
+        <div class="search-container">
+            <lightning-combobox
+                name="extension"
+                label="Extension"
+                value={extension}
+                placeholder="All"
+                options={options}
+                onchange={handleExtensionChange}
+            ></lightning-combobox>
+            <lightning-combobox
+                name="search_by"
+                label="Search By"
+                value={searchBy}
+                placeholder="Content"
+                options={options_search}
+                onchange={handleSearchByChange}
+            ></lightning-combobox>
+
+            <lightning-input type="text" label="." placeholder="type here at least three characters..." class="search_input" onchange={handleSearchTermChange}></lightning-input>
+            <lightning-button class="search_button" label="Search" disabled={isSearchDisabled} onclick={search}></lightning-button>
+        </div>
+        <br />
+        <div if:true={table_visiblity}  style="height: 500px">
+            <lightning-datatable key-field="id" data={files} columns={columns} onrowaction={handleRowAction} hide-checkbox-column="true"></lightning-datatable>
+        </div>
+        <div if:false={table_visiblity}>
+        <div class="child-container" if:true={not_found} >
+            <p>No Content Found</p>
+       
+    </div>
+    <div class="child-container" if:true={loader} >
+          <div class="exampleHolder">
+        <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+    </div>
+       
+    </div>
+    <div class="child-container" if:true={starting} style="height:auto">
+        <div class="wrap">
+  <h1 style="font-size:30px;font-weight:bold">Intelligent Files Search</h1>
+
+  <h2 style="font-size:18px;font-weight:bold">Features of Intelligent Search:</h2>
+  <div class="alert alert-success">
+    Support Most Used Extentions For Content Search (PDF, Excel, World, Text, CSV);
+  </div>
+  <div class="alert alert-success"> 
+    Support Unlimited Files Size
+  </div>
+  <div class="alert alert-success"> 
+    Search By Content And Title of the File
+  </div>
+  <div class="alert alert-success"> 
+    Search by All Extensions or by a specific Extension
+  </div>
+  <div class="alert alert-success"> 
+    View File Detail and Make Actions (Download,Preview,Delete,Create Public Url)
+  </div>
+  <div class="alert alert-success"> 
+    Thanks to its multilingual support, the search bar can provide accurate and relevant results, regardless of the language used during the search
+  </div>
+
+  <h2 style="font-size:18px;font-weight:bold">Limits of Intelligent Search:</h2>
+  <div class="alert alert-error radius">
+     Does not Support All Files Extensions
+  </div>
+  <div class="alert alert-error radius"> 
+    If you have bulk Files in your Org it would take some time to get Search Result
+  </div>
+  <div class="alert alert-error radius"> 
+    Typing errors in the search can lead to inaccurate results, just like your preferred search engine.
+  </div>
+</div>
+    </div>
+        </div>
+    </div>
+</template>
+
+
+<!-- <template>
+     <div class="main-container">
+          
+      <div class="search-container">
+          
+           <lightning-combobox
+            name="entension"
+            label="Extension"
+            value={extension}
+            placeholder="All"
+            options={options}
+           
+             ></lightning-combobox>
+               <lightning-combobox
+            name="search_by"
+            label="Search By"
+            value={value}
+            placeholder="Content"
+            options={options_search}
+           
+             ></lightning-combobox>
+            
+            <lightning-input type="text" label="." placeholder="type here..." class="search_input" onchange={handleSearchTermChange}></lightning-input>
+            <lightning-button class="search_button" label="Search" onclick={search}></lightning-button>
+        </div>
+        <br>
+        <div style="height:500px">
+             <lightning-datatable
+        key-field="id"
+        data={files}
+        columns={columns}
+        onrowaction={handleRowAction}
+        hide-checkbox-column="true"
+    ></lightning-datatable>
+        </div>
+   
+
+
+
+     </div>
+
+</template> -->
