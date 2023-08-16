@@ -1,70 +1,62 @@
-Documentation du Composant LWC "Intelligent Files Search"
-
-Table de Matieres :
-
-1-Aperçu du Composant LWC "Intelligent Files Search":
-Le composant LWC "Intelligent Files Search" est une solution puissante et flexible qui permet aux utilisateurs de rechercher des fichiers dans Salesforce en utilisant des critères avancés de recherche. Il prend en charge la recherche par contenu et par titre de fichier, la recherche par extension de fichier, et offre des fonctionnalités de filtrage et d'affichage de résultats personnalisables.
-
-2- Objectif et fonctionnalités:
-a-Objectif:
-Le principal objectif du composant "Intelligent Files Search" est de fournir aux utilisateurs une interface conviviale pour rechercher rapidement et efficacement des fichiers dans Salesforce, quels que soient leur contenu, leur extension ou leur taille. Il offre des fonctionnalités avancées de recherche et de filtrage pour répondre aux besoins de recherche les plus complexes.
-
-b-Fonctionnalités:
-Recherche par Contenu et par Titre : Les utilisateurs peuvent rechercher des fichiers en spécifiant des termes de recherche dans le contenu du fichier ou dans son titre.
-Recherche par Extension : Les utilisateurs peuvent filtrer leur recherche en fonction de l'extension du fichier, par exemple : PDF, Excel, Word, etc.
-Résultats en Temps Réel : Les résultats de la recherche sont affichés en temps réel au fur et à mesure que l'utilisateur tape sa requête et clique sur ‘search’.
-Interface Conviviale : L'interface utilisateur est intuitive et conviviale, permettant une expérience de recherche fluide.
-Personnalisation : Les utilisateurs peuvent personnaliser les options de recherche et les filtres selon leurs besoins.
-Prévisualisation de Fichier : Les utilisateurs peuvent prévisualiser les fichiers trouvés et effectuer des actions telles que le téléchargement et la suppression.
-Gestion des Langues : Le composant prend en charge la détection de la langue du contenu et fournit des options pour personnaliser les langues prises en charge.
-Utilisation Recommandée
-Le composant "Intelligent Files Search" est recommandé pour les organisations qui gèrent un grand nombre de fichiers dans Salesforce et ont besoin d'une solution de recherche avancée pour localiser rapidement des fichiers spécifiques. Il est particulièrement utile pour les entreprises multilingues et celles qui travaillent avec différents types de fichiers.
 
 
-3-Installation et Configuration:
-	a-Prérequis:
-	Cette solution est accessible sous n’importe quelle licence Salesforce et par n’importe quel utilisateur, sauf si l'administrateur a restreint l'accès (ou si l'option “all users” n'a pas été choisie lors de l'installation du package).
+#  Intelligent Files Search  to Salesforce as a Lightning Web Component
 
-	b-Installation dans une organisation Salesforce:
-		Pour installer le package comprenant le composant vous pouvez utiliser l’id: 
+##  Overview of the LWC Component "Intelligent Files Search":
+The LWC "Intelligent Files Search" component is a powerful and flexible solution that allows users to search for files in Salesforce using advanced search criteria. It supports search by content and file title, search by file extension, and offers customizable filtering and results display features.
 
-04t8d000000Eom7
-	
-	Utiliser cet Id au niveau de l’élément “INSTALL A PACKAGE” sur votre organisation où vous souhaitez avoir le composant de recherche comme dans la figure suivante, ensuite cliquez sur ‘INSTALL’:
+1- Purpose and features:
+a-Objective:
+The main objective of the "Intelligent Files Search" component is to provide users with a user-friendly interface to quickly and efficiently search for files in Salesforce, regardless of their content, extension or size. It offers advanced search and filter functionality to meet the most complex research needs.
 
+b-Features:
+Search by Content and Title: Users can search for files by specifying search terms in the file's content or in its title.
+Search by Extension: Users can filter their search by file extension, for example: PDF, Excel, Word, etc.
+Real Time Results: Search results are displayed in real time as the user types in their query and clicks on ‘search’.
+User-Friendly Interface: The user interface is intuitive and user-friendly, allowing for a smooth search experience.
+Customization: Users can customize search options and filters according to their needs.
+File Preview: Users can preview found files and perform actions such as downloading and deleting.
+Language Management: The component supports content language detection and provides options to customize supported languages.
+Recommended Use
+The Intelligent Files Search component is recommended for organizations that manage a large number of files in Salesforce and need an advanced search solution to quickly locate specific files. It is especially useful for multilingual companies and those who work with different file types.
 
-	
-Comme vous pouvez aussi cliquer directement sur le lien suivant : 
+## Requirements
 
-https://login.salesforce.com/packaging/installPackage.apexp?p0=04t8d000000Eom7
+* [Salesforce CLI](https://trailhead.salesforce.com/en/content/learn/modules/sfdx_app_dev/sfdx_app_dev_setup_dx#Tdxn4tBK-heading6)
+* Salesforce Organisation
+  
+## Installing Intelligent Files Search  using Salesforce DX
+1. Install Salesforce DX. Enable the Dev Hub in your org or sign up for a Dev Hub trial org and install the Salesforce DX CLI. Follow the instructions in the [Salesforce DX Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm?search_text=trial%20hub%20org) or in the [App Development with Salesforce DX](https://trailhead.salesforce.com/modules/sfdx_app_dev) Trailhead module. The steps include:
+   * [Enable Dev Hub in you project](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_enable_devhub.htm)
+   * [Install Salesforce CLI](https://trailhead.salesforce.com/en/content/learn/modules/sfdx_app_dev/sfdx_app_dev_setup_dx#Tdxn4tBK-heading6)
+   * (Optional) [Install Salesforce Extensions for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode)
 
-Qui ensuite vous rédigerez directement à la page d'authentification afin de choisir sur quelle organisation vous souhaitez installer le package:
+2. Clone the `salesforce_intelligent_files_search` from Github repo:
+```
+git clone https://github.com/Karim-elaoumari/salesforce_intelligent_files_search.git)https://github.com/Karim-elaoumari/salesforce_intelligent_files_search.git
+cd salesforce_intelligent_files_search
+cd '.\Intelligent Files Search\'
+```
+3. If you haven’t already done so, authenticate with your hub org and provide it with an alias (**DevHub** in the command below):
+```
+sfdx force:auth:web:login --setdefaultdevhubusername --setalias DevHub
+```
 
+4. Enter your Dev Hub org credentials in the browser that opens. After you log in successfully, you can close the browser. Create a scratch org using the `config/project-scratch-def.json` file, set the **username** as your default, and assign it an alias.
+```
+sfdx force:org:create --setdefaultusername -f config/project-scratch-def.json --setalias my-scratch-org
+```
 
-Dans les deux scénarios vous serez redirigés vers la page d’installation, dans laquelle vous choisissez pour qui vous voulez installer le package (choisissez ‘All Users’ pour que tous les utilisateurs auront l'accès à cette solution où un autre choix selon votre besoin).
+5. Push the app to your scratch org:
+```
+sfdx force:source:push -f
+```
 
-Cochez en suite l’option: ‘I acknowledge that I’m installing a Non-Salesforce Application that is not authorized for distribution as part of Salesforce’s AppExchange Partner Program..’ (vous n’aurez plus besoin de la cocher dès que le package sera disponible sur AppExchange de Salesforce et c’est très proche).
+6. Open the scratch org:
+```
+sfdx force:org:open
+```
 
-Puis cliquez sur ‘INSTALL’ .
+7. Click the app launcher icon and search for 'Intelligent Files Search'
 
-
-Ensuite, vous approuvez l'accès aux applications tierces. Cette approbation est nécessaire pour une installation correcte de la solution. Ensuite, cliquez sur "Continuer".
-
-Ensuite, vous attendez un certain temps pour que l'installation soit terminée, puis un message de confirmation s'affiche :
-
-
-Maintenant vous aurez votre composant à votre disposition.
-
-	
-	c-Configuration de l'accès aux données et des autorisations:
-En général, l'utilisateur n'aura accès qu'à ces fichiers, à moins que l'administrateur ait une opinion différente concernant l'ajout ou la restriction des permissions des utilisateurs
-
-
-
-4-Utilisation de base:
-a-Accéder au composant dans Salesforce
-Apres avoir accès à son organisation ,et pour utiliser le composant on procède comme suit:
-
-Sur le lanceur d’applications Salesforce tapez ‘Intelligent’ puis choisissez l’option:”Intelligent Files Search” comme présenté dans la figure suivante:
-
-Vous aurez comme résultat une nouvelle fenêtre contenant le composant suivant:
+```
